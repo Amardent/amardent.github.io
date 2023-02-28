@@ -1,0 +1,20 @@
+html, body, .vert-center {
+    height: 100%;
+}
+
+body {
+    background-color: black;
+    background-image: url("images/cropped_tooth.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+.image-spacer {
+    z-index: 1;
+
+}
+.image-carrier {
+    opacity: 0.8;
+    z-index: 5;
+    position: absolute;
+}
