@@ -43,6 +43,7 @@
                 form.addEventListener("submit", function(e) {
                     e.preventDefault();
                     const data = new FormData(form);
+                    form.reset();
                     const action = e.target.action;
                     fetch(action, {
                     method: 'POST',
