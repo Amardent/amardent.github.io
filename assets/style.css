@@ -2,21 +2,16 @@ html,
 body,
 .vert-center {
   height: 100%;
+  max-width: 100%;
+  width: 100svw;
 }
 
 .segment {
-  height: 100svh;
+  height: 95svh;
   width: 100vw;
   max-width: 100%;
 }
 
-body {
-  /* background-color: black; */
-  /* background-image: url("images/cropped_tooth.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white; */
-}
 .blackback {
   /* background-color: gray; */
 }
@@ -50,8 +45,34 @@ body {
 .disp-img {
   object-fit: contain;
   max-height: 33vh;
+  border-radius: 5%;
 }
 
 .rounded-top {
   border-radius: 10% 10% 0 0;
+}
+
+.prod-video {
+  object-fit: contain;
+  max-height: 100svh;
+  height: 100%;
+  width: 100%;
+}
+
+.offers-seg {
+  max-width: 100%;
+}
+
+.testemonials {
+  background-color: #89cfeb;
+}
+
+.testemonial {
+  background-color: #f5f5f5;
+  box-shadow: 0.5em 0.5em 0.5em #0f0f0f;
+  border-radius: 5%;
+}
+
+.quote-card {
+  background: #828282;
 }
