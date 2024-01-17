@@ -1,68 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Amardent</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-        <link href="assets/style.css" rel="stylesheet" type="text/css">
-    </head>
-    <body class="text-center container">
-       
-        <div class="row align-items-center vert-center position-relative">
-            <div class="col-md-8 offset-md-2">
-                <h1 class="display-1"><strong>AMARDENT</strong></h1>
-                <h1 class="display-5">The future of dentistry is coming soon</h1>
-                <h4 class="mt-4">Add your email to stay in the know</h3>
-                <form action="https://script.google.com/macros/s/AKfycbz2qxil6nGJLP2XjzbR1UM1Je-ZgYjT7ujmBpKxvxfdiuGuid7D5cWyAIUQFWkNr_5e/exec" method="POST" target="" class="form-inline" id="mail-form">
-                    <div class="form-group row">
-                        <!-- <label for="MERGE0" class="offset-md-1 col-md-1 col-form-label g-0">Email</label> -->
-                        <div class="col-md-6 g-0 offset-md-2">
-                            <input type="email" autocapitalize="off" autocorrect="off" name="email" id="MERGE0" placeholder="email@example.com" class="form-control" required>
-                        </div>
-                        <div class="col-md-2 g-0">
-                            <input type="submit" class="btn btn-primary" name="submit" value="Subscribe">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            
-        </div>
-        <div class="position-fixed bottom-0 col-md-4 start-50 translate-middle-x" id="alert-holder"></div>
-        
-        
-    
-        <script
-  src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
-  integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
-  crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-        <script>
-            window.addEventListener("load", function() {
-                const form = document.getElementById('mail-form');
-                form.addEventListener("submit", function(e) {
-                    e.preventDefault();
-                    const data = new FormData(form);
-                    form.reset();
-                    const action = e.target.action;
-                    fetch(action, {
-                    method: 'POST',
-                    body: data,
-                    })
-                    .then(() => {
-                        const alertHolder = document.getElementById('alert-holder');
-                        const wrapper = document.createElement('div');
-                        wrapper.innerHTML = `<div class="alert alert-success show fade" style="display: none;" id="success-alert" role="alert">Email Saved!</div>`
-                        alertHolder.append(wrapper)
-                        $('#success-alert').show()
-                    setTimeout(function() {
-                        const alert = bootstrap.Alert.getOrCreateInstance('#success-alert')
-                        alert.close()
-                    }, 1000)
-                    })
-                });
-                });
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Amardent</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link href="assets/style.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+    />
+    <style>
+      body {
+        font-family: "Montserrat", Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="navbar fixed-top py-0 navbar-expand-md rounded-bottom text-center"
+    >
+      <div class="container px-5">
+        <a class="navbar-brand" href="#">
+          <img
+            class="logo"
+            src="https://assets-global.website-files.com/65541d6617fb12568eb71dd9/655536f254f9d398580b1a7c_Amardent-01.svg"
+            height="40%"
+            width="80%"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        </script>   
-    </body>
+        <div
+          class="collapse navbar-collapse text-center justify-content-center align-items-center"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav mx-auto align-items-center">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Teledentistry</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">Our Team</a>
+            </li>
+          </ul>
+          <button class="btn btn-primary ml-auto">Buy Now</button>
+        </div>
+      </div>
+    </nav>
+    <div
+      class="segment primary-seg d-flex align-items-center justify-content-center"
+    >
+      <div class="container">
+        <div class="col-md-6">
+          <h1>6 Months phrasing</h1>
+          <p>
+            Scout is the first device that lets you monitor your oral health
+            from the comfort of your own home
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="second-seg rounded-top">
+      <div class="container pt-5 mb-5">
+        <div class="row mb-5">
+          <div
+            class="col-md-4 offset-md-1 col-md-push-6 order-md-last d-flex align-items-center"
+          >
+            <p>
+              <img
+                src="https://uploads-ssl.webflow.com/65541d6617fb12568eb71dd9/656a9308013607f025585189_Screenshot%202023-12-01%20at%202.17.55%E2%80%AFPM.png"
+                class="disp-img"
+              />
+            </p>
+          </div>
+          <div class="col-md-4 offset-md-1 order-md-first">
+            Scout helps you track your health, scientifically and objectivelly
+            <br />
+            Oral microbes + demineralization
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-4 offset-md-1 order-md-last">
+            <img
+              src="https://uploads-ssl.webflow.com/65541d6617fb12568eb71dd9/65694359f25e72003311dadd_connection_image.jpeg"
+              class="disp-img"
+            />
+          </div>
+          <div
+            class="col-md-4 offset-md-1 col-md-push-6 order-md-first d-flex align-items-center"
+          >
+            And our app helps to quantify where you're doing great and where you
+            can improve
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-4 offset-md-1 order-md-last">
+            <img
+              src="https://uploads-ssl.webflow.com/65541d6617fb12568eb71dd9/65694359f25e72003311dadd_connection_image.jpeg"
+              class="disp-img"
+            />
+          </div>
+          <div
+            class="col-md-4 offset-md-1 col-md-push-6 order-md-first d-flex align-items-center"
+          >
+            Easy to use Just plug and play
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="position-fixed bottom-0 col-md-4 start-50 translate-middle-x"
+      id="alert-holder"
+    ></div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
+      integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      window.addEventListener("load", function () {
+        const form = document.getElementById("mail-form");
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const data = new FormData(form);
+          form.reset();
+          const action = e.target.action;
+          fetch(action, {
+            method: "POST",
+            body: data,
+          }).then(() => {
+            const alertHolder = document.getElementById("alert-holder");
+            const wrapper = document.createElement("div");
+            wrapper.innerHTML = `<div class="alert alert-success show fade" style="display: none;" id="success-alert" role="alert">Email Saved!</div>`;
+            alertHolder.append(wrapper);
+            $("#success-alert").show();
+            setTimeout(function () {
+              const alert =
+                bootstrap.Alert.getOrCreateInstance("#success-alert");
+              alert.close();
+            }, 1000);
+          });
+        });
+      });
+    </script>
+  </body>
 </html>
