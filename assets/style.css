@@ -7,7 +7,7 @@ body,
 }
 
 .segment {
-  height: 95svh;
+  min-height: 95svh;
   width: 100vw;
   max-width: 100%;
 }

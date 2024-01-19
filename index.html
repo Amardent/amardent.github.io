@@ -52,16 +52,21 @@
         >
           <ul class="navbar-nav mx-auto align-items-center">
             <li class="nav-item">
-              <a class="nav-link" href="#">Blog</a>
+              <a
+                class="nav-link"
+                href="https://medium.com/amardents-newsletter/newsletters/amardent-updates"
+                target="_blank"
+                >Blog</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Teledentistry</a>
+              <a class="nav-link" href="/teledentistry.html">Teledentistry</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">Our Team</a>
+              <a class="nav-link" href="/team.html">Our Team</a>
             </li>
           </ul>
-          <button class="btn btn-primary ml-auto">Buy Now</button>
+          <a class="btn btn-primary ml-auto" href="/scout.html">Buy Now</a>
         </div>
       </div>
     </nav>
@@ -82,14 +87,9 @@
       <div class="container pb-3">
         <div class="row pt-5">
           <div class="col-md-5 offset-md-1 order-last mh-100 mw-100 mb-5">
-            <video
-              src="./assets/images/scout_labels.mp4"
-              type="video/mp4"
-              autoplay
-              muted
-              playsinline
-              class="prod-video mh-100"
-            ></video>
+            <video autoplay muted playsinline class="prod-video mh-100">
+              <source src="./assets/images/scout_labels.mp4" type="video/mp4" />
+            </video>
           </div>
           <div
             class="col-md-4 offset-md-1 order-first d-flex align-items-center justify-content-center"
@@ -234,30 +234,60 @@
       <div class="container">
         <div class="text-center mb-5 col-md-6 offset-md-3">
           <h1>Ready to take your oral health into your own hands?</h1>
-          <button class="btn cta-button btn-lg col-6">Get Scout Now</button>
+          <a class="btn cta-button btn-lg col-6" href="/scout.html"
+            >Get Scout Now</a
+          >
         </div>
         <div class="text-center col-md-6 offset-md-3">
           <h1>Not quite ready yet? No worries.</h1>
           <button class="btn cta-button">Stay in the loop</button>
+          <p>
+            <small>We care about your data</small><br />
+            <a href="/legal/privacy.html"
+              ><u><small>See our privacy policy</small></u></a
+            >
+          </p>
+          <p></p>
         </div>
       </div>
       <div class="container"><hr /></div>
       <div class="container-fluid row mw-100">
         <div class="col-3 offset-md-1 text-center text-md-start">
-          <a class="w-100" href="#">
+          <a class="w-100 text-center h-50" href="#">
             <img
-              class="logo footer-logo"
+              class="footer-logo"
               src="https://assets-global.website-files.com/65541d6617fb12568eb71dd9/655536f254f9d398580b1a7c_Amardent-01.svg"
               height="100%"
               width="100%"
             />
           </a>
         </div>
-        <div class="col-md-3 offset-md-1 text-center text-md-start mt-2">
+        <div class="col-md-3 offset-md-1 text-center text-md-start mt-4 mb-4">
           <div>Need support or have a question?</div>
           <div><u>info@amardent.com</u></div>
         </div>
-        <div class="col-md-3 offset-md-1 text-center text-md-start">TEST</div>
+        <div class="col-md-3 offset-md-1 text-center text-md-start mt-3">
+          <div>
+            <a href="/legal/privacy.html" class="link-light">Privacy Policy</a>
+          </div>
+          <div>
+            <a href="/legal/tos.html" class="link-light">Terms of Service</a>
+          </div>
+          <div>
+            <a href="/legal/disclaimer.html" class="link-light">Disclaimers</a>
+          </div>
+          <div>
+            <a href="/legal/returns.html" class="link-light">Return Policy</a>
+          </div>
+          <div>
+            <a href="/legal/cookies.html" class="link-light">Cookie Policy</a>
+          </div>
+          <div>
+            <a href="/legal/cookie-setting.html" class="link-light"
+              >Cookie Settings</a
+            >
+          </div>
+        </div>
       </div>
     </div>
 
@@ -276,5 +306,19 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
+    <script>
+      function isInView(elem) {
+        return $(elem).offset().top - $(window).scrollTop() < $(elem).height();
+      }
+      $(".prod-video").each(function (index, elem) {
+        var hasReachedUserExperience = false;
+        $(window).scroll(function () {
+          if (isInView($(elem)) && !hasReachedUserExperience) {
+            hasReachedUserExperience = true;
+            $("video", elem).get(0).play();
+          }
+        });
+      });
+    </script>
   </body>
 </html>
