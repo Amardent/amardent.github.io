@@ -24,6 +24,7 @@
   <body>
     <nav
       class="navbar fixed-top py-0 navbar-expand-md rounded-bottom text-center"
+      data-bs-theme="dark"
     >
       <div class="container px-5">
         <a class="navbar-brand" href="/index.html">
@@ -71,26 +72,194 @@
       </div>
     </nav>
 
-    <div
-      class="container d-flex align-items-center justify-content-center segment"
-    >
-      <div class="row order-md-last">
-        <img
-          src="/assets/images/Device and app.png"
-          style="object-fit: contain"
-        />
+    <div class="container segment row">
+      <div
+        class="order-md-last col-md-4 col-10 offset-1 offset-md-0 d-flex align-items-center d-inline"
+      >
+        <img src="/assets/images/Device and app.png" class="img-fluid" />
       </div>
-      <div class="col-md-5 text-center">
-        <h1>The <u>first</u> of it's kind</h1>
-        <div class="h4 text-body-secondary">
-          Scout takes the mystery out of dental health.
-          <br />
-          Track your teeth from the comfort of your home
+      <div
+        class="col-md-5 offset-md-1 text-center h-auto d-md-flex justify-content-center align-items-center d-inline ms-2"
+      >
+        <div>
+          <p class="display-2">Let's look at teeth in a new light</p>
+          <div class="text-body-secondary text-start text-md-center lead">
+            Scout takes the mystery out of dental health.
+            <br />
+            Track your teeth from the comfort of your home.
+          </div>
+          <div>
+            <a class="mt-3 text-center h3 btn btn-primary btn-lg mt-3">
+              Pre-order yours today for $50
+            </a>
+            <div class="text-body-secondary small">
+              By purchasing Scout, you agree to the Terms of Service and Privacy
+              Policy
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container text-center">
+      <div class="h3">Have Questions? We have answers.</div>
+      <div
+        class="accordion accordion-flush text-start"
+        id="accordionFlushExample"
+      >
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseOne"
+              aria-expanded="false"
+              aria-controls="flush-collapseOne"
+            >
+              Is Scout a medical device?
+            </button>
+          </h2>
+          <div
+            id="flush-collapseOne"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              No, Scout is a wellness device. Like a fitness tracker, Scout is
+              intended to help you stay healthy, not diagnose or aid in the
+              diagnosis of any illness or be used in a clinical setting.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseTwo"
+              aria-expanded="false"
+              aria-controls="flush-collapseTwo"
+            >
+              Will Scout require a subscription?
+            </button>
+          </h2>
+          <div
+            id="flush-collapseTwo"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              The base tier of Scout will not require a subscription. Just
+              download our app, plug in the device, and you're ready to go!
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseThree"
+              aria-expanded="false"
+              aria-controls="flush-collapseThree"
+            >
+              Can Scout be used by more than one person?
+            </button>
+          </h2>
+          <div
+            id="flush-collapseThree"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              Scout is recommended for one person at a time. Like a toothbrush,
+              our device goes in your mouth, so unless you're able to clean it
+              thoroughly, we'd recommend you keep it to yourself.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseFour"
+              aria-expanded="false"
+              aria-controls="flush-collapseFour"
+            >
+              Is Scout one size fits all?
+            </button>
+          </h2>
+          <div
+            id="flush-collapseFour"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              While Scout is meant to fit as many adults as possible, some
+              mouths may not work as well with it as we'd like. If you find your
+              device isn't fitting properly, reach out to info@amardent.com and
+              we'll find a solution!
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseFive"
+              aria-expanded="false"
+              aria-controls="flush-collapseFive"
+            >
+              What happens to my scan data?
+            </button>
+          </h2>
+          <div
+            id="flush-collapseFive"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              Those scans are yours and yours alone. We'll never sell them,
+              share them, or train on them.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseSix"
+              aria-expanded="false"
+              aria-controls="flush-collapseSix"
+            >
+              Can I share my scans with my dentist?
+            </button>
+          </h2>
+          <div
+            id="flush-collapseSix"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              While Scout isn't a medical device, it sometimes feels right to
+              share scans or scores with a dentist. We're actively working to
+              make it part of the app! In the meantime, if this is something
+              you'd like to do, reach out to info@amardent.com and let us know.
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="cta-seg rounded-top fixed-bottom">
+    <div class="cta-seg rounded-top pb-2 mb-0">
       <div class="container"><hr /></div>
       <div class="container-fluid row mw-100">
         <div class="col-3 offset-md-1 text-center text-md-start">
