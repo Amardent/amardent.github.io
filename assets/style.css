@@ -12,6 +12,12 @@ body,
   max-width: 100%;
 }
 
+.segment-small {
+  min-height: 90svh;
+  width: 100vw;
+  max-width: 100%;
+}
+
 .logo {
   max-width: 20vh;
 }
@@ -62,6 +68,10 @@ body,
 .cta-seg {
   background-color: #0f0f0f;
   color: #f5f5f5;
+}
+
+.card-body {
+  background-color: #f5ffff;
 }
 
 .cta-button {
