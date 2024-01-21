@@ -26,6 +26,42 @@
     </style>
   </head>
   <body>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Keep up with Amardent
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Add your email to get updates and information from Amardent.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <nav
       class="navbar fixed-top py-0 navbar-expand-lg rounded-bottom text-center"
       data-bs-theme="dark"
@@ -291,7 +327,13 @@
         </div>
         <div class="text-center col-md-6 offset-md-3 btn-lg btn-primary">
           <h1>Not quite ready yet? No worries.</h1>
-          <button class="btn cta-button">Stay in the loop</button>
+          <button
+            class="btn cta-button"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Stay in the loop
+          </button>
           <p>
             <small>We care about your data</small><br />
             <a href="/legal/privacy.html"
@@ -369,6 +411,14 @@
             $("video", elem).get(0).play();
           }
         });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        if (localStorage.AmardentVisitCount != 1) {
+          localStorage.AmardentVisitCount = 1;
+          $("#exampleModal").modal("show");
+        }
       });
     </script>
   </body>
