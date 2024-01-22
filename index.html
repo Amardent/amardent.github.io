@@ -30,13 +30,13 @@
       class="modal fade"
       id="exampleModal"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="emailModal"
       aria-hidden="true"
     >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">
+            <h1 class="modal-title fs-5" id="emailModal">
               Keep up with Amardent
             </h1>
             <button
@@ -48,16 +48,31 @@
           </div>
           <div class="modal-body">
             Add your email to get updates and information from Amardent.
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <form id="newsletterForm">
+              <div class="mb-1 mt-2">
+                <div class="col-md-6 mb-3">
+                  <label for="mailingListEmail" class="form-label"
+                    >Email address</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mailingListEmail"
+                    placeholder="name@example.com"
+                    name="email"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <button
+                    type="submit"
+                    class="btn btn-primary mb-3"
+                    id="emailFormSubmit"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -111,7 +126,7 @@
             </li>
           </ul>
           <a
-            class="btn btn-primary ml-auto"
+            class="btn btn-primary ml-auto mb-2 mb-lg-0"
             href="https://buy.stripe.com/5kA7vvbjNcQj26A145"
             >Pre-Order Scout Now</a
           >
@@ -120,14 +135,16 @@
     </nav>
     <div class="container segment primary-seg row">
       <div
-        class="col-md-6 col-10 offset-1 text-center d-flex justify-content-center align-items-center d-inline offset-md-1 pt-"
+        class="col-md-6 col-10 offset-1 text-center d-flex justify-content-center align-items-center d-inline offset-md-1 pt-3 pt-sm-3 pt-md-0"
       >
         <div class="pt-5">
-          <h1>An end to six months of worry between dentist appointments</h1>
-          <h5 style="color: gray">
+          <p class="display-5">
+            An end to six months of worry between dentist appointments
+          </p>
+          <p class="h5" style="color: gray">
             Scout monitors your oral health so you can have confidence in each
             and every smile
-          </h5>
+          </p>
           <a
             class="btn cta-button col-md-12 btn-lg rounded-pill mt-2 btn-primary border border-0"
             href="/scout.html"
@@ -309,6 +326,7 @@
           <a
             class="btn cta-button btn-lg col-12 mb-2 btn-primary"
             href="https://buy.stripe.com/5kA7vvbjNcQj26A145"
+            target="_blank"
             ><p class="h2">Get Scout Now</p></a
           >
           <div class="text-light">
@@ -390,8 +408,8 @@
     ></div> -->
 
     <script
-      src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
-      integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
     <script
@@ -419,6 +437,24 @@
           localStorage.AmardentVisitCount = 1;
           $("#exampleModal").modal("show");
         }
+      });
+    </script>
+    <script>
+      $("#newsletterForm").submit(function (e) {
+        e.preventDefault();
+        let formdata = {
+          email: $("#mailingListEmail").val(),
+        };
+
+        $.ajax({
+          type: "POST",
+          url: "https://fabform.io/f/1GaWLxp",
+          data: formdata,
+          dataType: "json",
+          encode: true,
+        }).always(function () {
+          $("#exampleModal").modal("hide");
+        });
       });
     </script>
   </body>
