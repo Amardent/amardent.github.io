@@ -14,7 +14,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link href="assets/style.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/style.css" rel="stylesheet" type="text/css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Montserrat"
@@ -24,69 +24,14 @@
         font-family: "Montserrat", Arial, Helvetica, sans-serif;
       }
     </style>
-    <script
-      type="text/javascript"
-      src="https://app.termly.io/resource-blocker/a6babb25-0a20-49de-89a8-f6bbfd21ec87?autoBlock=on"
-    ></script>
   </head>
   <body>
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="emailModal"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="emailModal">
-              Keep up with Amardent
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            Add your email to get updates and information from Amardent.
-            <form id="newsletterForm">
-              <div class="mb-1 mt-2">
-                <div class="col-md-6 mb-3">
-                  <label for="mailingListEmail" class="form-label"
-                    >Email address</label
-                  >
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="mailingListEmail"
-                    placeholder="name@example.com"
-                    name="email"
-                  />
-                </div>
-                <div class="col-md-6">
-                  <button
-                    type="submit"
-                    class="btn btn-primary mb-3"
-                    id="emailFormSubmit"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
     <nav
       class="navbar fixed-top py-0 navbar-expand-lg rounded-bottom text-center"
       data-bs-theme="dark"
     >
       <div class="container px-5">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="../index.html">
           <img
             class="logo"
             src="https://assets-global.website-files.com/65541d6617fb12568eb71dd9/655536f254f9d398580b1a7c_Amardent-01.svg"
@@ -120,13 +65,13 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/teledentistry.html">Teledentistry</a>
+              <a class="nav-link" href="../teledentistry.html">Teledentistry</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/team.html">Our Team</a>
+              <a class="nav-link" href="../team.html">Our Team</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/scout.html">Scout</a>
+              <a class="nav-link" href="../scout.html">Scout</a>
             </li>
           </ul>
           <a
@@ -137,69 +82,27 @@
         </div>
       </div>
     </nav>
-
-    <div class="segment container pt-5">
-      <div class="col-10 offset-1 mt-3 text-center">
-        <div class="display-4">
-          The next revolution in dentistry should be in your home
-        </div>
-        <img
-          class="img col-md-6"
-          src="https://uploads-ssl.webflow.com/65541d6617fb12568eb71dd9/65543ce78d33fa9feeab6262_hero_new.svg"
-        />
-      </div>
-      <div>
-        <p class="h2 text-center">
-          Medicines already exist that can reverse cavities,
-          <em>but only if caught early</em>.
-        </p>
-      </div>
-      <div>
-        <p class="pt-2 h5">
-          Amardent is building the first teledentistry platform to catch these
-          early cavities and help reverse them, all from your home.
-        </p>
-      </div>
-      <div>
-        <p class="pt-2 h5">
-          Want to bring a less painful dental experience to your home? Fill out
-          the form below to let us know where to grow next!
-        </p>
-      </div>
-      <form id="teledentForm">
-        <div class="mb-1 mt-2">
-          <div class="col-md-6 mb-3">
-            <label for="teledentEmail" class="form-label">Email address</label>
-            <input
-              type="email"
-              class="form-control"
-              id="teledentEmail"
-              placeholder="name@example.com"
-              name="email"
-            />
-            <label for="teledentLocal" class="form-label mt-2"
-              >Where is Amardent growing next?</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="teledentLocal"
-              placeholder="City, State, Country"
-              name="locale"
-            />
-          </div>
-          <div class="col-md-6">
-            <button
-              type="submit"
-              class="btn btn-primary mb-3"
-              id="teledentSubmit"
-            >
-              Submit
-            </button>
-          </div>
-        </div>
-      </form>
+    <div
+      class="container-fluid segment primary-seg row pt-5 justify-content-center mt-5"
+    >
+      <div
+        name="termly-embed"
+        data-id="ebb84f9c-e81e-474a-82c0-f1b1ee08d25a"
+        class="col-10"
+      ></div>
+      <script type="text/javascript">
+        (function (d, s, id) {
+          var js,
+            tjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://app.termly.io/embed-policy.min.js";
+          tjs.parentNode.insertBefore(js, tjs);
+        })(document, "script", "termly-jssdk");
+      </script>
     </div>
+
     <div class="cta-seg rounded-top pb-3">
       <div class="container">
         <div class="text-center mb-5 col-md-6 offset-md-3">
@@ -321,23 +224,6 @@
           encode: true,
         }).always(function () {
           $("#exampleModal").modal("hide");
-        });
-      });
-    </script>
-    <script>
-      $("#teledentForm").submit(function (e) {
-        e.preventDefault();
-        let formdata = {
-          email: $("#teledentEmail").val(),
-          locale: $("#teledentLocal").val(),
-        };
-
-        $.ajax({
-          type: "POST",
-          url: "https://fabform.io/f/5VswvbL",
-          data: formdata,
-          dataType: "json",
-          encode: true,
         });
       });
     </script>
