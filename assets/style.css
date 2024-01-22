@@ -31,16 +31,10 @@ body,
   color: #f5f5f5;
 }
 
-.primary-seg {
-  background-image: url("./images/angled_granite.png");
-  background-position: bottom right;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
 .second-seg {
   background-color: #0f0f0f;
   color: #f5f5f5;
+  width: 100vh;
 }
 
 .disp-img {
