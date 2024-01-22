@@ -103,7 +103,48 @@
       </script>
     </div>
 
-    <div class="cta-seg rounded-top">
+    <div class="cta-seg rounded-top pb-3">
+      <div class="container">
+        <div class="text-center mb-5 col-md-6 offset-md-3">
+          <h1>Ready to take your oral health into your own hands?</h1>
+          <a
+            class="btn cta-button btn-lg col-12 mb-2 btn-primary"
+            href="https://buy.stripe.com/5kA7vvbjNcQj26A145"
+            target="_blank"
+            ><p class="h2">Get Scout Now</p></a
+          >
+          <div class="text-light">
+            Shipments for preorders will begin in Summer of 2024.
+          </div>
+          <div class="text-light">
+            <small
+              ><small
+                ><small
+                  >By purchasing Scout, you agree to the Terms of Service and
+                  Privacy Policy</small
+                ></small
+              ></small
+            >
+          </div>
+        </div>
+        <div class="text-center col-md-6 offset-md-3 btn-lg btn-primary">
+          <h1>Not quite ready yet? No worries.</h1>
+          <button
+            class="btn cta-button"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Stay in the loop
+          </button>
+          <p>
+            <small>We care about your data</small><br />
+            <a href="/legal/privacy.html"
+              ><u><small>See our privacy policy</small></u></a
+            >
+          </p>
+          <p></p>
+        </div>
+      </div>
       <div class="container"><hr /></div>
       <div class="container-fluid row mw-100">
         <div class="col-3 offset-md-1 text-center text-md-start">
@@ -122,31 +163,33 @@
         </div>
         <div class="col-md-3 offset-md-1 text-center text-md-start mt-3">
           <div>
-            <a href="privacy.html" class="link-light">Privacy Policy</a>
+            <a href="/legal/privacy.html" class="link-light">Privacy Policy</a>
           </div>
           <div>
-            <a href="tos.html" class="link-light">Terms of Service</a>
+            <a href="/legal/tos.html" class="link-light">Terms of Service</a>
           </div>
           <div>
-            <a href="disclaimer.html" class="link-light">Disclaimers</a>
+            <a href="/legal/disclaimer.html" class="link-light">Disclaimers</a>
           </div>
           <div>
-            <a href="returns.html" class="link-light">Return Policy</a>
+            <a href="/legal/returns.html" class="link-light">Return Policy</a>
           </div>
           <div>
-            <a href="cookies.html" class="link-light">Cookie Policy</a>
+            <a href="/legal/cookies.html" class="link-light">Cookie Policy</a>
           </div>
           <div>
-            <a href="cookie-setting.html" class="link-light">Cookie Settings</a>
+            <a href="#" class="link-light termly-display-preferences"
+              >Cookie Settings</a
+            >
           </div>
         </div>
       </div>
     </div>
 
     <!-- <div
-      class="position-fixed bottom-0 col-md-4 start-50 translate-middle-x"
-      id="alert-holder"
-    ></div> -->
+        class="position-fixed bottom-0 col-md-4 start-50 translate-middle-x"
+        id="alert-holder"
+      ></div> -->
 
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -158,20 +201,6 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
-    <script>
-      function isInView(elem) {
-        return $(elem).offset().top - $(window).scrollTop() < $(elem).height();
-      }
-      $(".prod-video").each(function (index, elem) {
-        var hasReachedUserExperience = false;
-        $(window).scroll(function () {
-          if (isInView($(elem)) && !hasReachedUserExperience) {
-            hasReachedUserExperience = true;
-            $("video", elem).get(0).play();
-          }
-        });
-      });
-    </script>
     <script>
       $(document).ready(function () {
         if (localStorage.AmardentVisitCount != 1) {

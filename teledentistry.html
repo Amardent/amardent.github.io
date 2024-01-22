@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Amardent</title>
     <link
+      rel="icon"
+      href="https://assets-global.website-files.com/65541d6617fb12568eb71dd9/656a4d02a14ac7bdd497cc5d_transparent_logo_small.png"
+    />
+    <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
-    />
-    <link
-      rel="icon"
-      href="https://assets-global.website-files.com/65541d6617fb12568eb71dd9/656a4d02a14ac7bdd497cc5d_transparent_logo_small.png"
     />
     <link href="assets/style.css" rel="stylesheet" type="text/css" />
     <link
@@ -24,14 +24,69 @@
         font-family: "Montserrat", Arial, Helvetica, sans-serif;
       }
     </style>
+    <script
+      type="text/javascript"
+      src="https://app.termly.io/resource-blocker/a6babb25-0a20-49de-89a8-f6bbfd21ec87?autoBlock=on"
+    ></script>
   </head>
   <body>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="emailModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="emailModal">
+              Keep up with Amardent
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Add your email to get updates and information from Amardent.
+            <form id="newsletterForm">
+              <div class="mb-1 mt-2">
+                <div class="col-md-6 mb-3">
+                  <label for="mailingListEmail" class="form-label"
+                    >Email address</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mailingListEmail"
+                    placeholder="name@example.com"
+                    name="email"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <button
+                    type="submit"
+                    class="btn btn-primary mb-3"
+                    id="emailFormSubmit"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <nav
-      class="navbar fixed-top py-0 navbar-expand-md rounded-bottom text-center"
+      class="navbar fixed-top py-0 navbar-expand-lg rounded-bottom text-center"
       data-bs-theme="dark"
     >
       <div class="container px-5">
-        <a class="navbar-brand" href="/index.html">
+        <a class="navbar-brand" href="#">
           <img
             class="logo"
             src="https://assets-global.website-files.com/65541d6617fb12568eb71dd9/655536f254f9d398580b1a7c_Amardent-01.svg"
@@ -70,8 +125,15 @@
             <li class="nav-item">
               <a class="nav-link" href="/team.html">Our Team</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/scout.html">Scout</a>
+            </li>
           </ul>
-          <a class="btn btn-primary ml-auto" href="/scout.html">Buy Now</a>
+          <a
+            class="btn btn-primary ml-auto mb-2 mb-lg-0"
+            href="https://buy.stripe.com/5kA7vvbjNcQj26A145"
+            >Pre-Order Scout Now</a
+          >
         </div>
       </div>
     </nav>
@@ -136,7 +198,48 @@
         </div>
       </form>
     </div>
-    <div class="cta-seg rounded-top pb-2 mb-0">
+    <div class="cta-seg rounded-top pb-3">
+      <div class="container">
+        <div class="text-center mb-5 col-md-6 offset-md-3">
+          <h1>Ready to take your oral health into your own hands?</h1>
+          <a
+            class="btn cta-button btn-lg col-12 mb-2 btn-primary"
+            href="https://buy.stripe.com/5kA7vvbjNcQj26A145"
+            target="_blank"
+            ><p class="h2">Get Scout Now</p></a
+          >
+          <div class="text-light">
+            Shipments for preorders will begin in Summer of 2024.
+          </div>
+          <div class="text-light">
+            <small
+              ><small
+                ><small
+                  >By purchasing Scout, you agree to the Terms of Service and
+                  Privacy Policy</small
+                ></small
+              ></small
+            >
+          </div>
+        </div>
+        <div class="text-center col-md-6 offset-md-3 btn-lg btn-primary">
+          <h1>Not quite ready yet? No worries.</h1>
+          <button
+            class="btn cta-button"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Stay in the loop
+          </button>
+          <p>
+            <small>We care about your data</small><br />
+            <a href="/legal/privacy.html"
+              ><u><small>See our privacy policy</small></u></a
+            >
+          </p>
+          <p></p>
+        </div>
+      </div>
       <div class="container"><hr /></div>
       <div class="container-fluid row mw-100">
         <div class="col-3 offset-md-1 text-center text-md-start">
@@ -170,7 +273,7 @@
             <a href="/legal/cookies.html" class="link-light">Cookie Policy</a>
           </div>
           <div>
-            <a href="/legal/cookie-setting.html" class="link-light"
+            <a href="#" class="link-light termly-display-preferences"
               >Cookie Settings</a
             >
           </div>
@@ -179,13 +282,13 @@
     </div>
 
     <!-- <div
-      class="position-fixed bottom-0 col-md-4 start-50 translate-middle-x"
-      id="alert-holder"
-    ></div> -->
+        class="position-fixed bottom-0 col-md-4 start-50 translate-middle-x"
+        id="alert-holder"
+      ></div> -->
 
     <script
-      src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
-      integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
     <script
@@ -193,5 +296,31 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
+    <script>
+      $(document).ready(function () {
+        if (localStorage.AmardentVisitCount != 1) {
+          localStorage.AmardentVisitCount = 1;
+          $("#exampleModal").modal("show");
+        }
+      });
+    </script>
+    <script>
+      $("#newsletterForm").submit(function (e) {
+        e.preventDefault();
+        let formdata = {
+          email: $("#mailingListEmail").val(),
+        };
+
+        $.ajax({
+          type: "POST",
+          url: "https://fabform.io/f/1GaWLxp",
+          data: formdata,
+          dataType: "json",
+          encode: true,
+        }).always(function () {
+          $("#exampleModal").modal("hide");
+        });
+      });
+    </script>
   </body>
 </html>
