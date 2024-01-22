@@ -155,15 +155,15 @@
         </p>
       </div>
       <div>
-        <p>
-          Amardent is building the first teledentistry platform that could catch
-          these early cavities and help reverse them, all from your home.
+        <p class="pt-2 h5">
+          Amardent is building the first teledentistry platform to catch these
+          early cavities and help reverse them, all from your home.
         </p>
       </div>
       <div>
-        <p>
-          Interested in a less painful dental experience? Fill out the survey
-          below so we know where to grow first!
+        <p class="pt-2 h5">
+          Want to bring a less painful dental experience to your home? Fill out
+          the form below to let us know where to grow next!
         </p>
       </div>
       <form id="teledentForm">
@@ -177,13 +177,15 @@
               placeholder="name@example.com"
               name="email"
             />
-            <label for="teledentLocal" class="form-label">Email address</label>
+            <label for="teledentLocal" class="form-label mt-2"
+              >Where is Amardent growing next?</label
+            >
             <input
-              type="email"
+              type="text"
               class="form-control"
               id="teledentLocal"
-              placeholder="name@example.com"
-              name="email"
+              placeholder="City, State, Country"
+              name="locale"
             />
           </div>
           <div class="col-md-6">
@@ -319,6 +321,23 @@
           encode: true,
         }).always(function () {
           $("#exampleModal").modal("hide");
+        });
+      });
+    </script>
+    <script>
+      $("#teledentForm").submit(function (e) {
+        e.preventDefault();
+        let formdata = {
+          email: $("#teledentEmail").val(),
+          locale: $("#teledentLocal").val(),
+        };
+
+        $.ajax({
+          type: "POST",
+          url: "https://fabform.io/f/5VswvbL",
+          data: formdata,
+          dataType: "json",
+          encode: true,
         });
       });
     </script>
