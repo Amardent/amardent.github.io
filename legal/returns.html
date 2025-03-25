@@ -219,10 +219,15 @@
           type: "POST",
           url: "https://script.google.com/macros/s/AKfycbzoqMss1SIANc7zxY7ISTVEqpKmXZAEXFBXv4T-ndYvfkWOiT1qPS6aghHVqxe8MNHCAA/exec",
           data: formdata,
-          dataType: "json",
-          encode: true,
-        }).always(function () {
-          $("#exampleModal").modal("hide");
+          dataType: 'json',
+          crossDomain: true,
+          success: function(response) {
+            $("#exampleModal").modal("hide");
+          },
+          error: function(xhr, status, error) {
+            console.error('Error:', error);
+            $("#exampleModal").modal("hide");
+          }
         });
       });
     </script>
