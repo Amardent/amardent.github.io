@@ -310,12 +310,12 @@
       $("#newsletterForm").submit(function (e) {
         e.preventDefault();
         let formdata = {
-          email: $("#mailingListEmail").val(),
+          Email: $("#mailingListEmail").val(),
         };
 
         $.ajax({
           type: "POST",
-          url: "https://script.google.com/a/macros/amardent.com/s/AKfycbwn77xbvHxLUdzMf-euKWGxd39taL-l3s8UxSzhnavxpu3n5PE_xsr8bLN0UFli19XZbQ/exec",
+          url: "https://script.google.com/macros/s/AKfycbyBcQvCWURt8qH9SX2lqAABfRJmp0Cy6v-47PXtaTCR9pa_9OtO1sejK_cn7gUXgM7fOw/exec",
           data: formdata,
           dataType: "json",
           encode: true,
