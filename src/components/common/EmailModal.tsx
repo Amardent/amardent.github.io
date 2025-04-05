@@ -79,17 +79,13 @@ export default function EmailModal({ id, onClose }: EmailModalProps) {
 
     const result = await handleEmailSubscription({ Email: email });
     setResponse(result);
+    setIsSubmitting(false);
 
     if (result.success) {
       setEmail("");
-      // Don't call onClose here directly after timeout.
-      // Let the user close it via dismiss button/backdrop/esc,
-      // or potentially trigger hide programmatically if needed.
-      // The 'hidden.bs.modal' listener will call onClose.
-      // For now, we just show success message.
-      // setTimeout(() => {
-      //   onClose();
-      // }, 1500);
+      setTimeout(() => {
+        onClose();
+      }, 1500);
     }
   };
 
@@ -139,10 +135,18 @@ export default function EmailModal({ id, onClose }: EmailModalProps) {
                 <div className="col-md-6">
                   <button
                     type="submit"
-                    className="btn btn-primary mb-3"
-                    disabled={isSubmitting}
+                    className={`btn ${
+                      response && response.success
+                        ? "btn-success"
+                        : "btn-primary"
+                    } mb-3`}
+                    disabled={isSubmitting || response?.success}
                   >
-                    {isSubmitting ? "Subscribing..." : "Submit"}
+                    {isSubmitting
+                      ? "Subscribing..."
+                      : response && response.success
+                      ? "Subscribed"
+                      : "Submit"}
                   </button>
                 </div>
               </div>

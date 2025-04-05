@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import TeledentistryForm from "@/components/teledentistry/TeledentistryForm";
 
 export default function Teledentistry() {
   return (
@@ -19,59 +20,27 @@ export default function Teledentistry() {
             height={400}
           />
         </div>
-        <div>
+        <div className="col-10 offset-1">
           <p className="h2 text-center">
             Medicines already exist that can reverse cavities,
             <em>but only if caught early</em>.
           </p>
         </div>
-        <div>
+        <div className="col-10 offset-1">
           <p className="pt-2 h5">
             Amardent is building the first teledentistry platform to catch these
             early cavities and help reverse them, all from your home.
           </p>
         </div>
-        <div>
+        <div className="col-10 offset-1">
           <p className="pt-2 h5">
             Want to bring a less painful dental experience to your home? Fill
             out the form below to let us know where to grow next!
           </p>
         </div>
-        <form id="teledentForm">
-          <div className="mb-1 mt-2">
-            <div className="col-md-6 mb-3">
-              <label htmlFor="teledentEmail" className="form-label">
-                Email address
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="teledentEmail"
-                placeholder="name@example.com"
-                name="email"
-              />
-              <label htmlFor="teledentLocal" className="form-label mt-2">
-                Where is Amardent growing next?
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="teledentLocal"
-                placeholder="City, State, Country"
-                name="locale"
-              />
-            </div>
-            <div className="col-md-6">
-              <button
-                type="submit"
-                className="btn btn-primary mb-3"
-                id="teledentSubmit"
-              >
-                Submit
-              </button>
-            </div>
-          </div>
-        </form>
+        <div className="col-10 offset-1">
+          <TeledentistryForm id="teledentForm" />
+        </div>
       </div>
     </>
   );
