@@ -34,7 +34,8 @@ export default function Scout() {
                 Pre-order yours today for $50
               </Link>
               <div className="small">
-                Shipments for preorders will begin in Summer of 2024.
+                Shipments for orders placed before June 1st will begin in Summer
+                of 2025.
               </div>
               <div className="text-body-secondary">
                 <small>
@@ -151,7 +152,7 @@ export default function Scout() {
               data-bs-parent="#accordionFlushExample"
             >
               <div className="accordion-body">
-                Scout will be shipping starting in Summer of 2024. It is
+                Scout will be shipping starting in Summer of 2025. It is
                 currently undergoing rigorous testing and validation to make
                 sure that your Scout is giving you the best information
                 possible.
