@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import CTASection from "../common/CTASection";
+import CookiePreferences from "../common/CookiePreferences";
 
 export default function Footer() {
   return (
@@ -76,12 +77,7 @@ export default function Footer() {
             </Link>
           </div>
           <div>
-            <Link
-              href="#"
-              className="link-light text-decoration-none termly-display-preferences"
-            >
-              Cookie Settings
-            </Link>
+            <CookiePreferences />
           </div>
         </div>
       </div>
