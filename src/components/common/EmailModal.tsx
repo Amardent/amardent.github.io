@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { handleEmailSubscription } from "@/utils/formHandling";
+import { setCookie } from "@/utils/cookieUtils";
 
 declare global {
   interface Window {
@@ -30,9 +31,10 @@ interface Modal {
 interface EmailModalProps {
   id: string; // Add id prop for targeting
   onClose: () => void;
+  isOpen: boolean; // Add isOpen prop to control visibility
 }
 
-export default function EmailModal({ id, onClose }: EmailModalProps) {
+export default function EmailModal({ id, onClose, isOpen }: EmailModalProps) {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [response, setResponse] = useState<{
@@ -40,37 +42,47 @@ export default function EmailModal({ id, onClose }: EmailModalProps) {
     message: string;
   } | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
+  const bsModalRef = useRef<Modal | null>(null);
+  const COOKIE_NAME = "email_modal_shown";
 
+  // Initialize the modal
   useEffect(() => {
     const modalElement = modalRef.current;
-    // Modal should only mount when isOpen is true, but check bootstrap just in case
-    if (!modalElement || typeof window.bootstrap === "undefined") return;
 
-    // Get or initialize Bootstrap Modal instance
+    if (!modalElement) return;
+
+    // Initialize Bootstrap Modal
     const bsModal = window.bootstrap.Modal.getOrCreateInstance(modalElement);
+    bsModalRef.current = bsModal;
 
-    // Ensure the element is mounted in the DOM before showing
-    if (document.contains(modalElement)) {
-      bsModal.show();
-    }
-
-    // Event listener for when modal is fully hidden by Bootstrap
+    // Add event listener for when modal is hidden
     const handleHidden = () => {
-      onClose(); // Directly call onClose when Bootstrap hides it
+      onClose();
     };
 
     modalElement.addEventListener("hidden.bs.modal", handleHidden);
 
     // Cleanup function
     return () => {
-      // First remove the event listener
       modalElement.removeEventListener("hidden.bs.modal", handleHidden);
-      // Important: Dispose the modal instance when the component unmounts
-      // to prevent memory leaks and issues if it re-mounts later.
-      bsModal.dispose();
+
+      if (bsModalRef.current) {
+        bsModalRef.current.dispose();
+        bsModalRef.current = null;
+      }
     };
-    // Only depend on id and onClose. isOpen is implicitly true when mounting.
   }, [id, onClose]);
+
+  // Control modal visibility based on isOpen prop
+  useEffect(() => {
+    if (!bsModalRef.current) return;
+
+    if (isOpen) {
+      bsModalRef.current.show();
+    } else {
+      bsModalRef.current.hide();
+    }
+  }, [isOpen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,13 +95,15 @@ export default function EmailModal({ id, onClose }: EmailModalProps) {
 
     if (result.success) {
       setEmail("");
+      // Set the cookie to remember that the user has subscribed
+      setCookie(COOKIE_NAME, "true", 365);
       setTimeout(() => {
         onClose();
       }, 1500);
     }
   };
 
-  // Component is only rendered when isOpen is true
+  // Always render the modal in the DOM
   return (
     <div
       className="modal fade"
