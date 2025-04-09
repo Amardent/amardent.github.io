@@ -28,7 +28,7 @@ export default function Home() {
   }, [hasReachedUserExperience]);
 
   return (
-    <>
+    <div className="w-100">
       {/* Hero Section */}
       <section className="segment d-flex align-items-center">
         <div className="container">
@@ -63,16 +63,16 @@ export default function Home() {
       </section>
 
       {/* Video Section */}
-      <section className="second-seg rounded-top rounded-bottom w-100 container-fluid">
+      <section className="second-seg rounded-top rounded-bottom">
         <div className="container pb-3">
           <div className="row pt-5">
-            <div className="col-lg-5 offset-lg-1 order-last mh-100 mw-100 mb-5">
+            <div className="col-lg-5 offset-lg-1 order-last mb-5">
               <video
                 ref={videoRef}
                 autoPlay
                 muted
                 playsInline
-                className="prod-video mh-100 mw-100"
+                className="prod-video"
               >
                 <source
                   src="/assets/images/scout_labels.mp4"
@@ -190,6 +190,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

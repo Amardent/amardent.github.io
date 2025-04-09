@@ -5,45 +5,60 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+  --primary-color: #89cfeb;
+  --dark-bg: #0f0f0f;
+  --light-text: #f5f5f5;
 }
 
-body {
+html, body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
   min-height: 100vh;
-  max-width: 100%;
-  width: 100svw;
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .segment {
-  min-height: 95svh;
-  width: 100vw;
-  max-width: 100%;
+  height: 95vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 5vh;
 }
 
 .segment-small {
-  min-height: 90svh;
-  width: 100vw;
-  max-width: 100%;
+  min-height: 90vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
-  max-width: 20vh;
+  max-width: 20vw;
 }
 
 .navbar {
-  background-color: #0f0f0f;
-  color: #f5f5f5;
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  width: 100%;
 }
 
 .nav-link {
-  color: #f5f5f5;
+  color: var(--light-text) !important;
+  padding: 0.5rem 1rem;
+}
+
+.nav-link:hover {
+  color: var(--primary-color) !important;
 }
 
 .second-seg {
-  background-color: #0f0f0f;
-  color: #f5f5f5;
-  width: 100vh;
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  width: 100%;
+  padding: 2rem 0;
 }
 
 .disp-img {
@@ -58,19 +73,22 @@ body {
 
 .prod-video {
   object-fit: contain;
-  max-height: 100svh;
+  max-height: 100vh;
   height: 100%;
   width: 100%;
 }
 
 .offers-seg {
-  max-width: 100%;
+  width: 100%;
   border-radius: 10% 10% 0 0;
+  padding: 2rem 0;
 }
 
 .cta-seg {
-  background-color: #0f0f0f;
-  color: #f5f5f5;
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  width: 100%;
+  padding: 2rem 0;
 }
 
 .card-body {
@@ -78,9 +96,91 @@ body {
 }
 
 .cta-button {
-  background-color: #89cfeb;
+  background-color: var(--primary-color);
 }
 
 .footer-logo {
   width: 100%;
+}
+
+/* Bootstrap overrides */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #7ab8d3;
+  border-color: #7ab8d3;
+}
+
+.text-light {
+  color: var(--light-text) !important;
+}
+
+.bg-dark {
+  background-color: var(--dark-bg) !important;
+}
+
+.link-light {
+  color: var(--light-text) !important;
+}
+
+.link-light:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Navbar specific styles */
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-nav {
+  margin: 0 auto;
+}
+
+/* Ensure containers don't overflow */
+.container {
+  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Fix for mobile viewport issues */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: var(--dark-bg);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .navbar-nav {
+    margin: 0;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .segment, .segment-small {
+    min-height: auto;
+    padding: 4rem 0;
+  }
+  
+  .second-seg, .offers-seg, .cta-seg {
+    padding: 3rem 0;
+  }
 } 
