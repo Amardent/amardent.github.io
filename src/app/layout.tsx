@@ -36,7 +36,7 @@ export default function RootLayout({
         <ModalProvider>
           <TermlyCMP />
           <Header />
-          <main>{children}</main>
+          <main className="w-100">{children}</main>
           <Footer />
         </ModalProvider>
       </body>
