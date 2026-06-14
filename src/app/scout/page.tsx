@@ -106,7 +106,7 @@ export default function Scout() {
               src="/assets/images/device-app.png"
               alt="Scout Device and App"
               width={600}
-              height={400}
+              height={600}
             />
           </div>
         </div>

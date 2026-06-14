@@ -40,7 +40,7 @@ export default function Team() {
               src={member.image}
               alt={member.name}
               width={420}
-              height={420}
+              height={560}
             />
             <h3>{member.name}</h3>
             <div className="role">{member.role}</div>

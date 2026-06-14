@@ -28,8 +28,8 @@ export default function Header() {
           <Image
             src="/assets/images/logomark.svg"
             alt=""
-            width={24}
-            height={30}
+            width={293}
+            height={374}
             className="d-logo-mark"
             priority
           />

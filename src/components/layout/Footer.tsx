@@ -14,8 +14,8 @@ export default function Footer() {
           <Image
             src="/assets/images/logomark.svg"
             alt=""
-            width={20}
-            height={26}
+            width={293}
+            height={374}
             className="d-logo-mark"
           />
           <span>amardent</span>

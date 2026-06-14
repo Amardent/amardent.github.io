@@ -40,7 +40,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; }
 ::selection { background: var(--accent-soft); }
 
