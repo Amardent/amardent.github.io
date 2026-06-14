@@ -21,7 +21,6 @@ export default function TermlyEmbed({ dataId }: TermlyEmbedProps) {
     const embedDiv = document.createElement("div");
     embedDiv.setAttribute("name", "termly-embed");
     embedDiv.setAttribute("data-id", dataId);
-    embedDiv.className = "col-10";
     document.getElementById("termly-container")?.appendChild(embedDiv);
 
     return () => {
@@ -37,5 +36,5 @@ export default function TermlyEmbed({ dataId }: TermlyEmbedProps) {
     };
   }, [dataId]);
 
-  return <div id="termly-container" className="col-10" />;
+  return <div id="termly-container" />;
 }

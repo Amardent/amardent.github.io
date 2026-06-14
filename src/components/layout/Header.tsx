@@ -1,150 +1,78 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { useEffect } from "react";
+import { useState } from "react";
+
+const NAV_LINKS = [
+  {
+    href: "https://medium.com/amardents-newsletter/newsletters/amardent-updates",
+    label: "Blog",
+    external: true,
+  },
+  { href: "/teledentistry", label: "Teledentistry" },
+  { href: "/team", label: "Our Team" },
+  { href: "/scout", label: "Scout" },
+];
+
+const PREORDER_URL = "https://buy.stripe.com/5kA7vvbjNcQj26A145";
 
 export default function Header() {
-  // Function to close the navbar collapse when a link is clicked
-  const closeNavbar = () => {
-    // Get the navbar collapse element
-    const navbarCollapse = document.getElementById("navbarSupportedContent");
-
-    // Check if the navbar is expanded (open)
-    if (navbarCollapse && navbarCollapse.classList.contains("show")) {
-      // Get the toggle button
-      const toggleButton = document.querySelector(
-        ".navbar-toggler"
-      ) as HTMLButtonElement;
-
-      // If the toggle button exists, click it to close the navbar
-      if (toggleButton) {
-        toggleButton.click();
-      }
-    }
-  };
-
-  // Add event listeners to all nav links and the logo
-  useEffect(() => {
-    // Get all nav links
-    const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
-
-    // Get the logo link
-    const logoLink = document.querySelector(".navbar-brand");
-
-    // Get the pre-order button
-    const preOrderButton = document.querySelector(".btn-primary");
-
-    // Add click event listener to each nav link
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        closeNavbar();
-      });
-    });
-
-    // Add click event listener to the logo link
-    if (logoLink) {
-      logoLink.addEventListener("click", () => {
-        closeNavbar();
-      });
-    }
-
-    // Add click event listener to the pre-order button
-    if (preOrderButton) {
-      preOrderButton.addEventListener("click", () => {
-        closeNavbar();
-      });
-    }
-
-    // Clean up event listeners when component unmounts
-    return () => {
-      navLinks.forEach((link) => {
-        link.removeEventListener("click", closeNavbar);
-      });
-
-      if (logoLink) {
-        logoLink.removeEventListener("click", closeNavbar);
-      }
-
-      if (preOrderButton) {
-        preOrderButton.removeEventListener("click", closeNavbar);
-      }
-    };
-  }, []);
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
 
   return (
-    <nav
-      className="navbar fixed-top py-0 navbar-expand-lg rounded-bottom text-center"
-      data-bs-theme="dark"
-    >
-      <div className="container px-5">
-        <Link className="navbar-brand" href="/">
-          <Image
-            src="https://assets-global.website-files.com/65541d6617fb12568eb71dd9/655536f254f9d398580b1a7c_Amardent-01.svg"
-            alt="Amardent Logo"
-            width={200}
-            height={40}
-            className="logo"
-          />
+    <header className="d-nav">
+      <div className="d-nav-inner">
+        <Link className="d-logo" href="/" onClick={close}>
+          amardent
         </Link>
+
         <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
+          className="d-nav-toggle"
           aria-label="Toggle navigation"
-          style={{ color: "#ffffff" }}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
         >
-          <span className="navbar-toggler-icon"></span>
+          {open ? (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
+            </svg>
+          )}
         </button>
 
-        <div
-          className="collapse navbar-collapse text-center justify-content-center align-items-center"
-          id="navbarSupportedContent"
-        >
-          <ul className="navbar-nav mx-auto align-items-center">
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                href="https://medium.com/amardents-newsletter/newsletters/amardent-updates"
+        <nav className={"d-nav-links" + (open ? " open" : "")}>
+          {NAV_LINKS.map((link) =>
+            link.external ? (
+              <a
+                key={link.href}
+                href={link.href}
                 target="_blank"
-                onClick={closeNavbar}
+                rel="noopener noreferrer"
+                onClick={close}
               >
-                Blog
+                {link.label}
+              </a>
+            ) : (
+              <Link key={link.href} href={link.href} onClick={close}>
+                {link.label}
               </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                href="/teledentistry"
-                onClick={closeNavbar}
-              >
-                Teledentistry
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="/team" onClick={closeNavbar}>
-                Our Team
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="/scout" onClick={closeNavbar}>
-                Scout
-              </Link>
-            </li>
-          </ul>
-          <Link
-            className="btn btn-primary ml-auto mb-2 mb-lg-0"
-            href="https://buy.stripe.com/5kA7vvbjNcQj26A145"
+            )
+          )}
+          <a
+            className="d-btn d-btn-sm d-nav-cta"
+            href={PREORDER_URL}
             target="_blank"
-            onClick={closeNavbar}
+            rel="noopener noreferrer"
+            onClick={close}
           >
-            Pre-Order Scout Now
-          </Link>
-        </div>
+            Pre-order Scout
+          </a>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 }

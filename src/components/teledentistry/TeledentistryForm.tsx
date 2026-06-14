@@ -42,52 +42,42 @@ export default function TeledentistryForm({ id }: TeledentistryFormProps) {
   };
 
   return (
-    <form id={id} onSubmit={handleSubmit}>
-      <div className="mb-1 mt-2">
-        <div className="col-md-6 mb-3">
-          <label htmlFor={`${id}-email`} className="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id={`${id}-email`}
-            placeholder="name@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            disabled={isSubmitting}
-          />
-          <label htmlFor={`${id}-locale`} className="form-label mt-2">
-            Where is Amardent growing next?
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id={`${id}-locale`}
-            placeholder="City, State, Country"
-            value={locale}
-            onChange={(e) => setLocale(e.target.value)}
-            required
-            disabled={isSubmitting}
-          />
-        </div>
-        <div className="col-md-6">
-          <button
-            type="submit"
-            className="btn btn-primary mb-3"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "Submitting..." : "Submit"}
-          </button>
-        </div>
+    <form id={id} onSubmit={handleSubmit} className="form-grid">
+      <div className="field">
+        <label htmlFor={`${id}-email`} className="label">
+          Email address
+        </label>
+        <input
+          type="email"
+          className="input"
+          id={`${id}-email`}
+          placeholder="name@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          disabled={isSubmitting}
+        />
       </div>
+      <div className="field">
+        <label htmlFor={`${id}-locale`} className="label">
+          Where is Amardent growing next?
+        </label>
+        <input
+          type="text"
+          className="input"
+          id={`${id}-locale`}
+          placeholder="City, State, Country"
+          value={locale}
+          onChange={(e) => setLocale(e.target.value)}
+          required
+          disabled={isSubmitting}
+        />
+      </div>
+      <button type="submit" className="d-btn" disabled={isSubmitting}>
+        {isSubmitting ? "Submitting…" : "Submit"}
+      </button>
       {response && (
-        <div
-          className={`alert ${
-            response.success ? "alert-success" : "alert-danger"
-          }`}
-        >
+        <div className={`alert ${response.success ? "alert-ok" : "alert-err"}`}>
           {response.message}
         </div>
       )}

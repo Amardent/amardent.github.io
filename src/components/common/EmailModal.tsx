@@ -1,37 +1,13 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { handleEmailSubscription } from "@/utils/formHandling";
 import { setCookie } from "@/utils/cookieUtils";
 
-declare global {
-  interface Window {
-    bootstrap: {
-      Modal: {
-        // Define minimal interface for Bootstrap Modal
-        new (element: Element | null, options?: Record<string, unknown>): Modal;
-        getOrCreateInstance(
-          element: Element | null,
-          options?: Record<string, unknown>
-        ): Modal;
-        // Add other methods if needed
-      };
-    };
-  }
-}
-
-// Minimal interface for the Bootstrap Modal instance
-interface Modal {
-  show(): void;
-  hide(): void;
-  dispose(): void;
-  // Add other methods if needed
-}
-
 interface EmailModalProps {
-  id: string; // Add id prop for targeting
+  id: string;
   onClose: () => void;
-  isOpen: boolean; // Add isOpen prop to control visibility
+  isOpen: boolean;
 }
 
 export default function EmailModal({ id, onClose, isOpen }: EmailModalProps) {
@@ -41,48 +17,24 @@ export default function EmailModal({ id, onClose, isOpen }: EmailModalProps) {
     success: boolean;
     message: string;
   } | null>(null);
-  const modalRef = useRef<HTMLDivElement>(null);
-  const bsModalRef = useRef<Modal | null>(null);
   const COOKIE_NAME = "email_modal_shown";
 
-  // Initialize the modal
+  // Close on Escape; lock body scroll while open.
   useEffect(() => {
-    const modalElement = modalRef.current;
+    if (!isOpen) return;
 
-    if (!modalElement) return;
-
-    // Initialize Bootstrap Modal
-    const bsModal = window.bootstrap.Modal.getOrCreateInstance(modalElement);
-    bsModalRef.current = bsModal;
-
-    // Add event listener for when modal is hidden
-    const handleHidden = () => {
-      onClose();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && !isSubmitting) onClose();
     };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
-    modalElement.addEventListener("hidden.bs.modal", handleHidden);
-
-    // Cleanup function
     return () => {
-      modalElement.removeEventListener("hidden.bs.modal", handleHidden);
-
-      if (bsModalRef.current) {
-        bsModalRef.current.dispose();
-        bsModalRef.current = null;
-      }
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
     };
-  }, [id, onClose]);
-
-  // Control modal visibility based on isOpen prop
-  useEffect(() => {
-    if (!bsModalRef.current) return;
-
-    if (isOpen) {
-      bsModalRef.current.show();
-    } else {
-      bsModalRef.current.hide();
-    }
-  }, [isOpen]);
+  }, [isOpen, isSubmitting, onClose]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -95,7 +47,7 @@ export default function EmailModal({ id, onClose, isOpen }: EmailModalProps) {
 
     if (result.success) {
       setEmail("");
-      // Set the cookie to remember that the user has subscribed
+      // Remember the user subscribed.
       setCookie(COOKIE_NAME, "true", 365);
       setTimeout(() => {
         onClose();
@@ -103,78 +55,75 @@ export default function EmailModal({ id, onClose, isOpen }: EmailModalProps) {
     }
   };
 
-  // Always render the modal in the DOM
+  if (!isOpen) return null;
+
   return (
     <div
-      className="modal fade"
-      id={id} // Use the id prop
-      ref={modalRef}
-      tabIndex={-1}
-      aria-labelledby={`${id}-label`}
-      aria-hidden="true"
+      className="modal-overlay"
+      onClick={() => {
+        if (!isSubmitting) onClose();
+      }}
     >
-      <div className="modal-dialog modal-dialog-centered">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h1 className="modal-title fs-5" id={`${id}-label`}>
-              Keep up with Amardent
-            </h1>
+      <div
+        className="modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={`${id}-label`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="modal-head">
+          <h2 className="modal-title" id={`${id}-label`}>
+            Keep up with Amardent
+          </h2>
+          <button
+            type="button"
+            className="modal-close"
+            aria-label="Close"
+            onClick={onClose}
+            disabled={isSubmitting}
+          >
+            ×
+          </button>
+        </div>
+        <div className="modal-body">
+          Add your email to get updates and information from Amardent.
+          <form onSubmit={handleSubmit} className="form-grid">
+            <div className="field">
+              <label htmlFor={`${id}-email`} className="label">
+                Email address
+              </label>
+              <input
+                type="email"
+                className="input"
+                id={`${id}-email`}
+                placeholder="name@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={isSubmitting}
+              />
+            </div>
             <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="modal" // Use Bootstrap's dismiss attribute
-              aria-label="Close"
-              disabled={isSubmitting} // Keep disabled state binding
-            />
-          </div>
-          <div className="modal-body">
-            Add your email to get updates and information from Amardent.
-            <form onSubmit={handleSubmit}>
-              <div className="mb-1 mt-2">
-                <div className="col-md-6 mb-3">
-                  <label htmlFor={`${id}-email`} className="form-label">
-                    Email address
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id={`${id}-email`}
-                    placeholder="name@example.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    disabled={isSubmitting}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <button
-                    type="submit"
-                    className={`btn ${
-                      response && response.success
-                        ? "btn-success"
-                        : "btn-primary"
-                    } mb-3`}
-                    disabled={isSubmitting || response?.success}
-                  >
-                    {isSubmitting
-                      ? "Subscribing..."
-                      : response && response.success
-                      ? "Subscribed"
-                      : "Submit"}
-                  </button>
-                </div>
+              type="submit"
+              className="d-btn"
+              disabled={isSubmitting || response?.success}
+            >
+              {isSubmitting
+                ? "Subscribing…"
+                : response && response.success
+                ? "Subscribed"
+                : "Submit"}
+            </button>
+            {response && (
+              <div
+                className={`alert ${
+                  response.success ? "alert-ok" : "alert-err"
+                }`}
+              >
+                {response.message}
               </div>
-              {response && (
-                <div
-                  className={`alert ${
-                    response.success ? "alert-success" : "alert-danger"
-                  }`}
-                >
-                  {response.message}
-                </div>
-              )}
-            </form>
-          </div>
+            )}
+          </form>
         </div>
       </div>
     </div>

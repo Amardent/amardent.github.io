@@ -36,7 +36,7 @@ export default function CookiePreferences() {
 
   return (
     <button
-      className="termly-display-preferences link-light text-decoration-none bg-transparent border-0 p-0"
+      className="termly-display-preferences"
       aria-label="Cookie Preferences"
     >
       Cookie Settings
