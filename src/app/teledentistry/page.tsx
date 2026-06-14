@@ -16,7 +16,7 @@ export default function Teledentistry() {
         </h1>
       </div>
 
-      <div className="reveal" style={{ maxWidth: 560, margin: "0 auto 40px" }}>
+      <div className="reveal" style={{ maxWidth: "35rem", margin: "0 auto 2.5rem" }}>
         <Image
           src="/assets/images/teledentistry-hero.svg"
           alt="Dental Revolution"
@@ -41,7 +41,7 @@ export default function Teledentistry() {
         </p>
       </div>
 
-      <div className="card-soft reveal" style={{ marginTop: 24 }}>
+      <div className="card-soft reveal" style={{ marginTop: "1.5rem" }}>
         <TeledentistryForm id="teledentForm" />
       </div>
     </section>

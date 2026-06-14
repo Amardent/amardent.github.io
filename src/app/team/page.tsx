@@ -49,7 +49,7 @@ export default function Team() {
         ))}
       </div>
 
-      <p className="d-sub reveal" style={{ marginTop: "48px" }}>
+      <p className="d-sub reveal" style={{ marginTop: "3rem" }}>
         If you&apos;re interested in joining the team or learning more about
         Amardent, reach out to{" "}
         <a
