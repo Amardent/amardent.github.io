@@ -13,7 +13,7 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   {
     name: "Eric Frank",
-    role: "Co-founder, CEO",
+    role: "Founder, CEO",
     bio: "Formerly an engineer at Verily (Google Life Sciences), Eric has a passion for developing accessible ways to monitor your own health. Eric is a UPenn grad with a degree in CS, along with minors in Engineering Entrepreneurship and Classics.",
     image: "/assets/images/eric-frank.jpg",
   },
