@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 const NAV_LINKS = [
@@ -24,7 +25,15 @@ export default function Header() {
     <header className="d-nav">
       <div className="d-nav-inner">
         <Link className="d-logo" href="/" onClick={close}>
-          amardent
+          <Image
+            src="/assets/images/logomark.svg"
+            alt=""
+            width={24}
+            height={30}
+            className="d-logo-mark"
+            priority
+          />
+          <span>amardent</span>
         </Link>
 
         <button

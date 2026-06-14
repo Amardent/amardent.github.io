@@ -74,8 +74,10 @@ a { text-decoration: none; color: inherit; }
 /* ── nav ── */
 .d-nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px); background: rgba(251, 250, 248, 0.8); border-bottom: 1px solid var(--line); }
 .d-nav-inner { position: relative; max-width: 1160px; margin: 0 auto; padding: 14px 32px; display: flex; align-items: center; gap: 28px; }
-.d-logo { font-family: var(--font-serif); font-style: italic; font-size: 25px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink); }
+.d-logo { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-serif); font-style: italic; font-size: 25px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink); }
 .d-logo.small { font-size: 21px; }
+.d-logo-mark { height: 30px; width: auto; }
+.d-logo.small .d-logo-mark { height: 26px; }
 .d-nav-links { display: flex; gap: 26px; margin-left: auto; align-items: center; }
 .d-nav-links a { font-size: 15px; font-weight: 500; color: var(--muted); transition: color .15s; }
 .d-nav-links a:hover { color: var(--ink); }

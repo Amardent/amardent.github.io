@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import CTASection from "../common/CTASection";
 import CookiePreferences from "../common/CookiePreferences";
 
@@ -10,7 +11,14 @@ export default function Footer() {
       <CTASection />
       <div className="d-foot">
         <Link href="/" className="d-logo small">
-          amardent
+          <Image
+            src="/assets/images/logomark.svg"
+            alt=""
+            width={20}
+            height={26}
+            className="d-logo-mark"
+          />
+          <span>amardent</span>
         </Link>
         <div className="d-foot-mail">
           <div>Need support or have a question?</div>
