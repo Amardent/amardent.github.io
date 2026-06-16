@@ -1,195 +1,235 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useReveal } from "@/hooks/useReveal";
+import PhonePanel from "@/components/common/PhonePanel";
+import Faq from "@/components/common/Faq";
+
+const PREORDER_URL = "https://buy.stripe.com/5kA7vvbjNcQj26A145";
+
+const STEPS = [
+  {
+    n: "01",
+    t: "Open the app",
+    d: "Connect your Scout and the app walks you through everything. You're ready to scan in seconds.",
+    img: "/assets/images/step-connect.jpg",
+    alt: "Setting up Scout in the app",
+  },
+  {
+    n: "02",
+    t: "Smile, start, and scan",
+    d: "Bite down gently and follow along in the app. Scout captures everything — no aiming, no fuss.",
+    img: "/assets/images/step-scan.png",
+    alt: "Scanning your mouth with Scout",
+  },
+  {
+    n: "03",
+    t: "Get your OraScore",
+    d: "In moments, see a clear picture of your oral wellness, plus simple, personal steps to keep it up.",
+    img: "/assets/images/step-results.png",
+    alt: "Your results in the app",
+  },
+];
+
+const FAQ_ITEMS: [string, string][] = [
+  [
+    "Is Scout a medical device?",
+    "No — Scout is a wellness device. Like a fitness tracker for your mouth, it's built to help you stay informed and build better habits, not to diagnose, treat, or replace a visit to your dentist.",
+  ],
+  [
+    "Is Scout FDA approved?",
+    "No. Scout is a consumer wellness device and is not FDA approved or cleared. It's made for everyday awareness of your smile — not to diagnose, treat, or prevent any condition.",
+  ],
+  [
+    "Will Scout require a subscription?",
+    "The base tier of Scout never requires a subscription. Download the app, plug in your device, and you're ready to go.",
+  ],
+  [
+    "How often do I need to use it?",
+    "Just 30 seconds, about once a week. Scout is designed to fit into your routine, not take it over.",
+  ],
+  [
+    "What happens to my scan data?",
+    "Your scans are yours and yours alone — we will never sell or share them.",
+  ],
+  [
+    "Can I share my results with my dentist?",
+    "Many people like to. We're actively building sharing into the app — in the meantime, reach out and we'll help you export your scores.",
+  ],
+];
 
 export default function Home() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [hasReachedUserExperience, setHasReachedUserExperience] =
-    useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (videoRef.current && !hasReachedUserExperience) {
-        const videoElement = videoRef.current;
-        const rect = videoElement.getBoundingClientRect();
-        const isInView = rect.top < window.innerHeight && rect.bottom >= 0;
-
-        if (isInView) {
-          setHasReachedUserExperience(true);
-          videoElement.play();
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [hasReachedUserExperience]);
+  const heroR = useReveal();
+  const stepsR = useReveal();
+  const appR = useReveal();
+  const isR = useReveal();
+  const faqR = useReveal();
 
   return (
-    <div className="w-100">
-      {/* Hero Section */}
-      <section className="segment d-flex align-items-center">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-md-6">
-              <h1 className="display-4 mb-4">
-                An end to six months of worry between dentist appointments
-              </h1>
-              <p className="h5 text-body-secondary mb-4">
-                Scout monitors your oral health so you can have confidence in
-                each and every smile
-              </p>
-              <Link
-                href="/scout"
-                className="btn cta-button col-md-12 btn-lg rounded-pill mt-2 btn-primary border border-0"
+    <>
+      {/* HERO */}
+      <section className="d-hero" id="top" ref={heroR}>
+        <div className="d-hero-grid">
+          <div className="d-hero-copy reveal">
+            <span className="d-eyebrow">Meet Scout</span>
+            <h1 className="d-h1">
+              Know your smile is cared for,
+              <br />
+              <em>between every visit.</em>
+            </h1>
+            <p className="d-lede">
+              Scout keeps an eye on your oral wellness from home — so the six
+              months between dentist appointments never feel like a guessing
+              game again.
+            </p>
+            <div className="d-hero-cta">
+              <a
+                href={PREORDER_URL}
+                className="d-btn"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                See how Scout can work for you
+                Pre-order Scout — $50
+              </a>
+              <Link href="/scout" className="d-link-arrow">
+                See how it works <span>→</span>
               </Link>
             </div>
-            <div className="col-md-6">
-              <Image
-                src="/assets/images/angled_granite.png"
-                alt="Scout Device"
-                width={600}
-                height={400}
-                className="img-fluid"
-                priority
-              />
+            <div className="d-hero-rea">
+              <span>No radiation</span>
+              <i />
+              <span>No pain</span>
+              <i />
+              <span>30 seconds a week</span>
             </div>
+          </div>
+          <div className="d-hero-art reveal">
+            <div className="d-hero-glow" />
+            <Image
+              src="/assets/images/device-app.png"
+              alt="The Scout device alongside the OraScore app"
+              width={600}
+              height={600}
+              priority
+            />
           </div>
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="second-seg rounded-top rounded-bottom">
-        <div className="container pb-3">
-          <div className="row pt-5">
-            <div className="col-lg-5 offset-lg-1 order-last mb-5">
-              <video
-                ref={videoRef}
-                autoPlay
-                muted
-                playsInline
-                className="prod-video"
+      {/* HOW IT WORKS */}
+      <section className="d-how" id="how" ref={stepsR}>
+        <div className="d-wrap">
+          <div className="d-section-head reveal">
+            <span className="d-eyebrow center">How it works</span>
+            <h2 className="d-h2">
+              Thirty seconds.
+              <br />
+              Once a week.
+            </h2>
+            <p className="d-sub">That&apos;s all Scout asks of you.</p>
+          </div>
+          <div className="d-steps">
+            {STEPS.map((step, i) => (
+              <div
+                className="d-step reveal"
+                style={{ transitionDelay: `${i * 90}ms` }}
+                key={step.n}
               >
-                <source
-                  src="/assets/images/scout_labels.mp4"
-                  type="video/mp4"
-                />
-              </video>
-            </div>
-            <div className="col-lg-4 offset-lg-1 order-first d-flex align-items-center justify-content-center">
-              <div>
-                <div className="h1">
-                  The most advanced way to measure your oral wellness
+                <div className="d-step-media">
+                  <Image
+                    src={step.img}
+                    alt={step.alt}
+                    width={400}
+                    height={300}
+                  />
                 </div>
-                <div className="mt-3 mb-5">
-                  No radiation, no pain, and no waiting. The safest and most
-                  advanced imaging on the market.
-                </div>
-                <div>
-                  Get information about your gum health, tooth mineralization,
-                  and more, all from the comfort of your own home
-                </div>
+                <div className="d-step-n">{step.n}</div>
+                <h3 className="d-step-t">{step.t}</h3>
+                <p className="d-step-d">{step.d}</p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="offers-seg rounded-top pb-3 mb-3">
-        <div className="container pt-5 mb-5">
-          <div className="row mb-5">
-            <div className="col-md-4 offset-md-1 order-md-last text-center text-md-end">
-              <Image
-                src="/assets/images/tooth.png"
-                alt="Microbes and Minerals"
-                width={400}
-                height={300}
-                className="disp-img"
-              />
-            </div>
-            <div className="col-md-3 offset-md-3 col-md-push-6 order-md-first d-flex align-items-center">
-              <div>
-                <div className="text-center fs-3">
-                  Microbes, Minerals, and More
-                </div>
-                <div className="text-center text-md-left">
-                  Scout images and tracks the biometrics that drive your oral
-                  health
-                </div>
+      {/* APP / ORASCORE */}
+      <section className="d-app" id="app" ref={appR}>
+        <div className="d-app-grid">
+          <div className="d-app-copy reveal">
+            <span className="d-eyebrow">The OraScore</span>
+            <h2 className="d-h2 left">
+              The most advanced way to measure your oral wellness.
+            </h2>
+            <p className="d-sub left">
+              Safe fluorescence imaging reveals what a mirror can&apos;t — your
+              gums, tooth mineralization, plaque and more. No radiation. No pain.
+              No waiting.
+            </p>
+            <ul className="d-checks">
+              <li>One clear OraScore, updated every scan</li>
+              <li>Personalized, plain-language guidance</li>
+              <li>A streak to keep the habit easy</li>
+            </ul>
+            <div className="d-scan-note">
+              <div className="d-scan-img">
+                <Image
+                  src="/assets/images/tooth-scan.png"
+                  alt="A tooth seen through Scout's fluorescence imaging"
+                  width={84}
+                  height={84}
+                />
               </div>
+              <p>
+                What Scout sees — fluorescence imaging makes early changes
+                visible long before they&apos;re a problem.
+              </p>
             </div>
           </div>
-          <div className="row mt-5">
-            <div className="col-md-4 offset-md-1 order-md-last text-center text-md-end">
-              <Image
-                src="https://uploads-ssl.webflow.com/65541d6617fb12568eb71dd9/656a9308013607f025585189_Screenshot%202023-12-01%20at%202.17.55%E2%80%AFPM.png"
-                alt="Fast Feedback"
-                width={400}
-                height={300}
-                className="disp-img"
-              />
-            </div>
-            <div className="col-md-3 offset-md-1 col-md-push-6 order-md-first d-flex align-items-center">
-              <div>
-                <div className="text-center fs-3">
-                  Fast, Meaningful Feedback
-                </div>
-                <div className="text-center text-md-left">
-                  Scout&apos;s companion app gives you an instant oral wellness
-                  score, as well as personalized ways to improve it.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row mt-5">
-            <div className="col-md-4 offset-md-1 order-md-last text-center text-md-end">
-              <Image
-                src="https://uploads-ssl.webflow.com/65541d6617fb12568eb71dd9/65694359f25e72003311dadd_connection_image.jpeg"
-                alt="Easy to Use"
-                width={400}
-                height={300}
-                className="disp-img"
-              />
-            </div>
-            <div className="col-md-3 offset-md-3 col-md-push-6 order-md-first d-flex align-items-center">
-              <div>
-                <div className="text-center fs-3">
-                  In an easy to use package
-                </div>
-                <div className="text-center text-md-left">
-                  Just wrap the strap around your phone, plug in the USB cable,
-                  and Scout will do the rest for you.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row mt-5">
-            <div className="col-md-4 offset-md-1 order-md-last center-block text-center text-md-end">
-              <Image
-                src="https://uploads-ssl.webflow.com/65541d6617fb12568eb71dd9/656dd8441bab66563b49bae3_design%203.0%20(1).png"
-                alt="Easy Design"
-                width={400}
-                height={300}
-                className="disp-img mx-auto center-block"
-              />
-            </div>
-            <div className="col-md-3 offset-md-2 col-md-push-6 order-md-first d-flex align-items-center">
-              <div>
-                <div className="text-center fs-3">Smile, Start, and Scan</div>
-                <div className="text-md-start text-center">
-                  An easy, intuitive design meant for everyone, children and
-                  adults alike
-                </div>
-              </div>
-            </div>
+          <div className="d-app-art reveal">
+            <PhonePanel />
           </div>
         </div>
       </section>
-    </div>
+
+      {/* WHAT IT IS */}
+      <section className="d-is" ref={isR}>
+        <div className="d-wrap d-is-grid reveal">
+          <div className="d-is-card">
+            <h4>A wellness companion</h4>
+            <p>
+              Scout is a wellness device — like a fitness tracker for your mouth.
+              It helps you stay informed and build better habits.
+            </p>
+          </div>
+          <div className="d-is-card">
+            <h4>Not a medical device</h4>
+            <p>
+              Scout doesn&apos;t diagnose, isn&apos;t a medical device, and is
+              not FDA approved. It&apos;s the in-between awareness that keeps you
+              confident until your next visit.
+            </p>
+          </div>
+          <div className="d-is-card">
+            <h4>Yours, and only yours</h4>
+            <p>
+              Your scans are yours — we never sell or share them, and the base
+              Scout needs no subscription.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="d-faq" id="faq" ref={faqR}>
+        <div className="d-faq-wrap reveal">
+          <div className="d-faq-head">
+            <span className="d-eyebrow">Questions?</span>
+            <h2 className="d-h2 left">We have answers.</h2>
+          </div>
+          <Faq items={FAQ_ITEMS} defaultOpen={0} />
+        </div>
+      </section>
+    </>
   );
 }
